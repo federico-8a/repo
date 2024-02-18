@@ -1,0 +1,11 @@
+#List the contents of blob storage
+$storageAccountName = "lab3federico"
+$resourceGroupName = "lab3"
+$containerName = "xxxxfederico"
+
+$ctx = (Get-AzStorageAccount -ResourceGroupName $resourceGroupName -AccountName $storageAccountName).Context
+
+$blobs = Get-AzStorageBlob -Context $ctx -Container $containerName
+foreach ($blob in $blobs) {
+    Write-Output "Blob Name: $($blob.Name)"
+}
